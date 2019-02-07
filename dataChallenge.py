@@ -1,3 +1,4 @@
+
 import numpy as np
 import csv
 from mySVM import mySVM as mys
@@ -43,5 +44,23 @@ hypothesis methods:
 # LSTM
 
 '''
+
+
+
+Xtr0= readData('Xtr0.csv')
+Ytr0 = readData('Ytr0.csv')
+
+print(Xtr0)
+'''
+hypothesis methods:
+
+# SVM with sequential kernel
+
+# RNN
+
+# LSTM
+
+'''
+
 
 

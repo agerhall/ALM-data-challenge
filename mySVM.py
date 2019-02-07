@@ -1,3 +1,4 @@
+
 import quadprog
 import numpy as np
 class mySVM:
@@ -29,3 +30,4 @@ class mySVM:
     def score(self,pred,true):
         mse=np.sum((pred-true)**2)/len(true)
         return mse
+
