@@ -1,8 +1,9 @@
+
 import quadprog
 import numpy as np
 class mySVM:
-    def __init__(self, alpha,lmd, kernel):
-        self.alpha=alpha # weights
+    def __init__(self,lmd, kernel):
+        self.alpha=[] # weights
         self.lmd=lmd # regularization parameter
         self.kernel = kernel
 
@@ -13,7 +14,8 @@ class mySVM:
     # fit the model to data
     def fit(self, X,Y):
         K = self.kernel.compute(X) # Compute the kernel of the data
-        self.alpha=quadprog.solve_qp(K,2*Y,lb=0, ub= 1/(self.lmd*2*len(Y)))
+        self.alpha = quadprog.solve_qp(H=K, f=2 * Y, A=[], b=[], Aeq=[], beq=[], lb=np.zeros(len(Y), 1),
+                                       ub=np.repeat(1 / (self.lmd * 2 * len(Y)), len(Y)))
 
     # predict on data
     def predict(self,data):
@@ -28,3 +30,4 @@ class mySVM:
     def score(self,pred,true):
         mse=np.sum((pred-true)**2)/len(true)
         return mse
+
